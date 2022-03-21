@@ -32,7 +32,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                <Bloglist blogs={blogs} />
+                <Bloglist blogs={blogs} title="all blogs!"/>
             </div>
         </>
     )
