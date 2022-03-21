@@ -20,7 +20,6 @@ function Home() {
     return (
         <>
             <div className="home">
-                homepage
                 <h2>
                     User name: {name}
                 </h2>
