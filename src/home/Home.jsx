@@ -1,11 +1,14 @@
+import { useState } from "react";
+
 function Home() {
-    const handelClick = () =>{
+    const [name, setName] = useState("anonymous");
+    const handelClick = () => {
         console.log("hello there");
     }
-    const printName = (name) =>{
+    const printName = (name) => {
         console.log("your name is " + name)
     }
-    const handelEvent = (e) =>{
+    const handelEvent = (e) => {
         console.log(e.target);
     }
     return (
@@ -13,9 +16,11 @@ function Home() {
             <div className="home">
                 homepage
             </div>
+            <h2>User name: {name}</h2>
+            <button onClick={()=>{setName("Arther")}}>change user name</button>
             <button onClick={handelClick}>click me</button>
-            <button onClick={()=>{printName("yoshi")}}>print</button>
-            <button onClick={(e)=>{handelEvent(e)}}>trigger</button>
+            <button onClick={() => { printName("yoshi") }}>print</button>
+            <button onClick={(e) => { handelEvent(e) }}>trigger</button>
         </>
     )
 }
