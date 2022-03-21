@@ -5,6 +5,9 @@ function Home() {
     const printName = (name) =>{
         console.log("your name is " + name)
     }
+    const handelEvent = (e) =>{
+        console.log(e.target);
+    }
     return (
         <>
             <div className="home">
@@ -12,6 +15,7 @@ function Home() {
             </div>
             <button onClick={handelClick}>click me</button>
             <button onClick={()=>{printName("yoshi")}}>print</button>
+            <button onClick={(e)=>{handelEvent(e)}}>trigger</button>
         </>
     )
 }
