@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Bloglist from "../shared/BlogList";
 
 function Home() {
     const [name, setName] = useState("anonymous");
@@ -31,15 +32,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                <div className="blogs">
-                    {blogs.map((blog) => (
-                        <div className="blog" key={blog.id}>
-                            <h2>{blog.title}</h2>
-                            <p>{blog.body}</p>
-                            <blockquote> {blog.author} </blockquote>
-                        </div>
-                    ))}
-                </div>
+                <Bloglist blogs={blogs} />
             </div>
         </>
     )
