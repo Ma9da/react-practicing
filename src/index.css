@@ -11,20 +11,25 @@ button{
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
 }
-button:hover{
+button:hover,
+button:focus{
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
 }
-button:active{
+button:active,
+button:focus{
   color: #ffe9dc;
   background: #c99789;
 }
 h2{
   color: 	#c99789;
   text-transform: capitalize;
+}
+.home{
+  text-align: center;
 }
 .blog{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
