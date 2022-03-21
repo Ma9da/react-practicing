@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Bloglist from "../shared/BlogList";
 
 function Home() {
@@ -9,6 +9,9 @@ function Home() {
         { title: "welcome party", body: "lorem ipsum...", author: "yoshi", id: 2 },
         { title: "web dev top tip", body: "lorem ipsum...", author: "mario", id: 3 },
     ])
+    useEffect(() => {
+        console.log("fires on changing the name state");
+    }, [name]);
     const handelDelete = (id) =>{
         const newBlogs = blogs.filter((blog) => blog.id !== id)
         setBlogs(newBlogs)
