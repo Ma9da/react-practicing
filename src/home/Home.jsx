@@ -9,6 +9,10 @@ function Home() {
         { title: "welcome party", body: "lorem ipsum...", author: "yoshi", id: 2 },
         { title: "web dev top tip", body: "lorem ipsum...", author: "mario", id: 3 },
     ])
+    const handelDelete = (id) =>{
+        const newBlogs = blogs.filter((blog) => blog.id !== id)
+        setBlogs(newBlogs)
+    }
     const handelClick = () => {
         console.log("hello there");
     }
@@ -32,7 +36,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                <Bloglist blogs={blogs} title="all blogs!" />
+                <Bloglist blogs={blogs} title="all blogs!" handelDelete = {handelDelete}/>
                 <Bloglist blogs={blogs.filter((blog) => blog.author === "mario")} title="mario's blogs" />
             </div>
         </>
