@@ -32,7 +32,8 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                <Bloglist blogs={blogs} title="all blogs!"/>
+                <Bloglist blogs={blogs} title="all blogs!" />
+                <Bloglist blogs={blogs.filter((blog) => blog.author === "mario")} title="mario's blogs" />
             </div>
         </>
     )
