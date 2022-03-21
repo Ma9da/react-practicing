@@ -1,5 +1,3 @@
-import './App.css';
-
 function App() {
   const title = 'welcome to the new blog'
   const likes = 50;
