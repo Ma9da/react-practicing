@@ -4,6 +4,7 @@ const Create = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [author, setAuthor] = useState('mario')
+    const [isPending, setIsPending] = useState(false)
     const handelSubmit = (e) => {
         e.preventDefault()
         const blog = { title, body, author }
@@ -14,6 +15,7 @@ const Create = () => {
         })
             .then(() => {
                 console.log("new blog added");
+                setIsPending(true)
             })
     }
     return (
@@ -43,7 +45,8 @@ const Create = () => {
                     <option value="mario">mario</option>
                     <option value="yoshi">yoshi</option>
                 </select>
-                <button type="submit">submit</button>
+                {!isPending && <button>abb blog</button>}
+                {isPending && <button>adding blog ...</button>}
             </form>
             <article className="blog">
                 <h2>{title}</h2>
