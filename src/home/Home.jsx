@@ -4,14 +4,16 @@ import Bloglist from "../shared/BlogList";
 function Home() {
     const [name, setName] = useState("anonymous");
     const [age, setAge] = useState(0);
-    const [blogs, setBlogs] = useState([
-        { title: "my new website", body: "lorem ipsum...", author: "mario", id: 1 },
-        { title: "welcome party", body: "lorem ipsum...", author: "yoshi", id: 2 },
-        { title: "web dev top tip", body: "lorem ipsum...", author: "mario", id: 3 },
-    ])
+    const [blogs, setBlogs] = useState(null)
     useEffect(() => {
-        console.log("fires on changing the name state");
-    }, [name]);
+        fetch('http://localhost:8000/blogs')
+        .then(res => {
+            return res.json()
+        })
+        .then((data)=>{
+            setBlogs(data)
+        })
+    }, []);
     const handelDelete = (id) =>{
         const newBlogs = blogs.filter((blog) => blog.id !== id)
         setBlogs(newBlogs)
@@ -39,8 +41,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                <Bloglist blogs={blogs} title="all blogs!" handelDelete = {handelDelete}/>
-                {/* <Bloglist blogs={blogs.filter((blog) => blog.author === "mario")} title="mario's blogs" /> */}
+                {blogs && <Bloglist blogs={blogs} title="all blogs!" handelDelete = {handelDelete}/>}
             </div>
         </>
     )
