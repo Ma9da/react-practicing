@@ -6,14 +6,23 @@ function Home() {
     const [age, setAge] = useState(0);
     const [blogs, setBlogs] = useState(null)
     const [isPending, setIsPending] = useState(true)
+    const [error, setError] = useState(null);
     useEffect(() => {
         fetch('http://localhost:8000/blogs')
         .then(res => {
+            if(!res.ok){
+                throw Error("couldn't fetch data for that resource")
+            }
             return res.json()
         })
         .then((data)=>{
             setBlogs(data)
             setIsPending(false)
+            setError(null)
+        })
+        .catch(err => {
+            setIsPending(false)
+            setError(err.message)
         })
     }, []);
     const handelClick = () => {
@@ -39,6 +48,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
+                {error && <div>{error}</div>}
                 {isPending && <div>Loading...</div>}
                 {blogs && <Bloglist blogs={blogs} title="all blogs!"/>}
             </div>
