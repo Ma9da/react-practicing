@@ -5,6 +5,22 @@
   margin: 0;
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+  color: #000000;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: 	#c99789;
+  padding: 0.9375rem;
+  color: #ffe9dc;
+}
+.links a{
+  margin: 0 0.9375rem;
+  color: #ffe9dc;
+}
 button{
   border: none;
   background: #ffe9dc;
