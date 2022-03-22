@@ -5,6 +5,7 @@ function Home() {
     const [name, setName] = useState("anonymous");
     const [age, setAge] = useState(0);
     const [blogs, setBlogs] = useState(null)
+    const [isPending, setIsPending] = useState(true)
     useEffect(() => {
         fetch('http://localhost:8000/blogs')
         .then(res => {
@@ -12,6 +13,7 @@ function Home() {
         })
         .then((data)=>{
             setBlogs(data)
+            setIsPending(false)
         })
     }, []);
     const handelClick = () => {
@@ -37,6 +39,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
+                {isPending && <div>Loading...</div>}
                 {blogs && <Bloglist blogs={blogs} title="all blogs!"/>}
             </div>
         </>
