@@ -14,10 +14,6 @@ function Home() {
             setBlogs(data)
         })
     }, []);
-    const handelDelete = (id) =>{
-        const newBlogs = blogs.filter((blog) => blog.id !== id)
-        setBlogs(newBlogs)
-    }
     const handelClick = () => {
         console.log("hello there");
     }
@@ -41,7 +37,7 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                {blogs && <Bloglist blogs={blogs} title="all blogs!" handelDelete = {handelDelete}/>}
+                {blogs && <Bloglist blogs={blogs} title="all blogs!"/>}
             </div>
         </>
     )
