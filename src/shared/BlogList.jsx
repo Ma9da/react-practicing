@@ -6,7 +6,7 @@ const Bloglist = ({blogs, title}) => {
                 {blogs.map((blog) => (
                     <div className="blog" key={blog.id}>
                         <h2>{blog.title}</h2>
-                        <p>{blog.body}</p>
+                        <p>{blog.body.length > 10 ? blog.body.substring(0,10) + "..." : blog.body}</p>
                         <blockquote> {blog.author} </blockquote>
                     </div>
                 ))}
