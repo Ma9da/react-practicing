@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Bloglist from "../shared/BlogList";
 import useFectch from '../useFectch';
 
@@ -14,7 +14,7 @@ function Home() {
     const handelEvent = (e) => {
         console.log(e.target);
     }
-    const {data: blogs, isPending, error} = useFectch('http://localhost:8000/blogs')
+    const { data: blogs, isPending, error } = useFectch('http://localhost:8000/blogs')
     return (
         <>
             <div className="home">
@@ -31,7 +31,7 @@ function Home() {
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
                 {error && <div>{error}</div>}
                 {isPending && <div>Loading...</div>}
-                {blogs && <Bloglist blogs={blogs} title="all blogs!"/>}
+                {blogs && <Bloglist blogs={blogs} title="all blogs!" />}
             </div>
         </>
     )
