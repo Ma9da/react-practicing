@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Bloglist from "../shared/BlogList";
-import useFectch from '../useFectch';
+import useFetch from '../useFetch';
 
 function Home() {
     const [name, setName] = useState("anonymous");
@@ -14,7 +14,7 @@ function Home() {
     const handelEvent = (e) => {
         console.log(e.target);
     }
-    const { data: blogs, isPending, error } = useFectch('http://localhost:8000/blogs')
+    const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
     return (
         <>
             <div className="home">
