@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Bloglist from "../shared/BlogList";
+import useFetch from '../useFetch';
 
 function Home() {
     const [name, setName] = useState("anonymous");
     const [age, setAge] = useState(0);
-    const [blogs, setBlogs] = useState([
-        { title: "my new website", body: "lorem ipsum...", author: "mario", id: 1 },
-        { title: "welcome party", body: "lorem ipsum...", author: "yoshi", id: 2 },
-        { title: "web dev top tip", body: "lorem ipsum...", author: "mario", id: 3 },
-    ])
-    useEffect(() => {
-        console.log("fires on changing the name state");
-    }, [name]);
-    const handelDelete = (id) =>{
-        const newBlogs = blogs.filter((blog) => blog.id !== id)
-        setBlogs(newBlogs)
-    }
     const handelClick = () => {
         console.log("hello there");
     }
@@ -25,6 +14,7 @@ function Home() {
     const handelEvent = (e) => {
         console.log(e.target);
     }
+    const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
     return (
         <>
             <div className="home">
@@ -39,8 +29,9 @@ function Home() {
                 <button onClick={handelClick}>click me</button>
                 <button onClick={() => { printName("yoshi") }}>print</button>
                 <button onClick={(e) => { handelEvent(e) }}>trigger</button>
-                <Bloglist blogs={blogs} title="all blogs!" handelDelete = {handelDelete}/>
-                {/* <Bloglist blogs={blogs.filter((blog) => blog.author === "mario")} title="mario's blogs" /> */}
+                {error && <div>{error}</div>}
+                {isPending && <div>Loading...</div>}
+                {blogs && <Bloglist blogs={blogs} title="all blogs!" />}
             </div>
         </>
     )
