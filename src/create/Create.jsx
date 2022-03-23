@@ -48,11 +48,6 @@ const Create = () => {
                 {!isPending && <button>abb blog</button>}
                 {isPending && <button>adding blog ...</button>}
             </form>
-            <article className="blog">
-                <h2>{title}</h2>
-                <p>{body}</p>
-                <span>{author}</span>
-            </article>
         </>
     );
 }
